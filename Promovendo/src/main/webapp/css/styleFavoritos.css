@@ -1,0 +1,209 @@
+.container {
+    max-width: auto;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+/*inicio Estilo para o cabeçalho */
+header {
+    position: fixed !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222222;
+    top: 0%;
+    width: 100%;
+    height: 10%;
+    
+}
+
+#title {
+    flex-direction: column;
+    line-height: 10px;
+    color: #fd8a24;
+    padding: 10px;
+
+}
+
+header li {
+    display: inline-block;
+    margin: 20px;
+
+}
+
+ul{
+    list-style: none;
+   
+}
+
+.menu-inicial {
+    padding: 15px;
+
+}
+
+header a {
+    color: white;
+}
+
+header a:hover {
+    color: #fd8a24;
+    transition: 0.3s all;
+}
+
+#inscrave-se-bnt {
+    border: 2px solid #fd8a24;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+#inscrave-se-bnt:hover {
+    background-color: #fd8a24;
+    color: white;
+}
+
+/* Fim Estilo para o cabeçalho */
+
+/* Estilo paineis principais */
+body {
+    background-color: #222222;
+}
+.favorite {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: solid 1px #fd8a24;
+    border-right: 0px;
+    border-left: 0px;
+    padding: 1rem;
+    display: flex; 
+    justify-content: space-between;
+    background-color: #222222;
+    color: #fff;
+}
+
+.logo{
+    mix-blend-mode: screen;
+}
+
+.a24{
+    font-family: Kotta One; 
+    font-size: 24px;
+    color: #fd8a24 !important;
+}
+
+.a32{
+    font-family: Koulen; 
+    font-size: 28px;
+}
+
+.a16{
+    font-family: Kotta One; 
+    font-size: 16px;
+}
+
+.flexrow{
+    display: flex; 
+    flex-direction: row;
+}
+
+.flexcolumn{
+    display: flex; 
+    flex-direction: column;
+}
+
+.ordem{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.produtos{
+    width: 188px; 
+    height: 143px;
+    margin-right: 1rem;
+}
+
+.favoriteImg{
+    margin-right:1rem;
+}
+
+.favorite a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.favoriteImg{
+    color: #fff;
+}
+
+
+/* Propriedades para definirem o posicionamento dos itens do cabeçalho */
+.lista {
+    list-style: none;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    display: flex;
+    justify-content: end;
+    margin: 0;
+    padding: 0;
+}
+
+
+.lista a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.lista li {
+    margin: 0 15px;
+}
+/* Estilo Rodapé */
+footer {
+    width: 100%;
+    height: 30%;
+    background-color: #fd8a24;
+}
+
+.logo-rodape {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-rodape {
+    width: 70%;
+    height: 100px; 
+    margin: 0  0 0 300px;
+
+}
+
+.menu-rodape li{
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+    font-size: 20px;
+}
+.menu-rodape a {
+    color: #222222;
+}
+
+.menu-rodape a:hover {
+    color: #fff;
+    transition: 0.3s all;
+}
+
+.informacoes-finais{
+    padding: 10px;
+}
+.informacoes-finais p {
+    text-align: center;
+}
+
+.informacoes-finais img {
+    text-align: center;
+}
+/*Fim Estilo Rodapé */
+
