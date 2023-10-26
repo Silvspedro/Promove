@@ -6,17 +6,14 @@ function validarForm() {
 	var nome = document.forms["formCadastro"]["nome"].value;
 	var email = document.forms["formCadastro"]["email"].value;
 	var senha = document.forms["formCadastro"]["senha"].value;
-	var confirSenha = document.forms["formCadastro"]["confirSenha"].value;
 	
 	var nomeError = document.getElementById("nomeError");
 	var emailError = document.getElementById("emailError");
 	var senhaError = document.getElementById("senhaError");
-	var confirSenha = document.getElementById("confirError");
 
 	nomeError.innerHTML = "";
 	emailError.innerHTML = "";
 	senhaError.innerHTML = "";
-	confirSenha.innerHTML = "";
 
 	var isValid = true;
 
@@ -34,10 +31,7 @@ function validarForm() {
 		senhaError.innerHTML = "Senha é obrigatória";
 		isValid = false;
 	}
-	if (senha != confirSenha) {
-		confirError.innerHTML = "Senha diferente da digitada";
-		isValid = false;
-	}
+
 	return isValid;
 }
 let count = 1;
@@ -47,6 +41,16 @@ setInterval(function() {
 	nextImage();
 }, 4000)
 
+function confereSenha() {
+	const senha = document.querySelector('input[name=senha]');
+	const confirSenha = document.querySelector('input[name=confirSenha]');
+	
+	if (confirSenha.value === senha.value){
+		confereSenha.setCustomValidity('');
+	} else{
+		confereSenha.setCustomValidity('As senhas não conferem ');
+	}
+}
 
 function nextImage() {
 	count++;

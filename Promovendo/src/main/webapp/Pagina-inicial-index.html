@@ -94,18 +94,17 @@
 					<p>Não perca os Shows do seu artista preferido cadastre-se agora e tenha notificações persolizadas!
 					</p>
 					<div class="dados-inseridos">
-						<form name="formCadastro" action="insert" onsubmit="return validarForm()">
-                    <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required>
-                    <input type="text" name="email" class="form-control" placeholder="Email" required>
-                    <input type="password" name="senha" class="form-control" placeholder="Senha" required>
-                    <input type="password" name="confirSenha" class="form-control" placeholder="Confirme sua senha" required>
-                    <span class="error" id="nomeError"></span>
-                    <span class="error" id="emailError"></span>
-                    <span class="error" id="senhaError"></span>
-                    <span class="error" id="confirError"></span>
-                    <input type="submit" id="btn-cadastrar" value="Cadastrar Agora">
-                </form>
-					
+						<form name="formCadastro" action="insert" >
+							<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required onsubmit="return validarForm()">
+							<input type="text" name="email" class="form-control" placeholder="Email" required onsubmit="return validarForm()">
+							<input type="password" name="senha" class="form-control" placeholder="Senha" required onchange="confereSenha();" onsubmit="return validarForm()" >
+							<input type="password" name="confirSenha" class="form-control" placeholder="Confirme sua senha" required onchange="confereSenha();" >
+							<span class="error" id="nomeError"></span>
+							<span class="error" id="emailError"></span>
+							<span class="error" id="senhaError"></span>
+							<input type="submit" id="btn-cadastrar" value="Cadastrar Agora">
+						</form>
+
 					</div>
 				</div>
 			</div>

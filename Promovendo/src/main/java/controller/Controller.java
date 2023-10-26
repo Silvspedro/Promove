@@ -15,34 +15,35 @@ import model.JavaBeans;
 /**
  * Servlet implementation class ValidacaoLogin
  */
-@WebServlet(urlPatterns = {"/ValidacaoLogin, /Controller", "/main", "/insert"})
+@WebServlet(urlPatterns = { "/Logar", "/main", "/insert" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
-    JavaBeans usuario = new JavaBeans();
-   
-    public Controller() {
-    	super();
-    }
+	JavaBeans usuario = new JavaBeans();
 
-	
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public Controller() {
+		super();
+	}
+	//Metodo de decisão e direcionamento para prosseguimento seguinte
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String action = request.getServletPath(); // Armazena o caminho da requisição.
 		System.out.println(action);
-		if (action.equals("/ValidacaoLogin")) {
+		if (action.equals("/Logar")) {
+			System.out.println("Entrou");
 			validacaoLogin(request, response);
 		} else if (action.equals("/insert")) {
 			novoUsuario(request, response);
-		}  
+		}
 	}
-	
-	
-	protected void novoUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//Metodo para adicionar novo Usuario
+	protected void novoUsuario(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// Teste de recebimento dos dados do formulário.
-		System.out.println(request.getParameter("nome"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("senha"));
+//		System.out.println(request.getParameter("nome"));
+//		System.out.println(request.getParameter("email"));
+//		System.out.println(request.getParameter("senha"));
 		// Setar as variáveis JavaBeans.
 		usuario.setNome_usuario(request.getParameter("nome"));
 		usuario.setEmail_usuario(request.getParameter("email"));
@@ -52,33 +53,36 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		// Redirecionar para o documento login.html
 		response.sendRedirect("confirm-cadastro.html");
 	}
+	//Metodo para validar login do Usuario
+	protected void validacaoLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-
-
-	
-	protected void validacaoLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// Varioaveis utilizadas para validar login
+		String emailDigitado = request.getParameter("email");
+		String senhaDigitada = request.getParameter("senha");
+		String emailValidado = null;
+		String senhaValidada = null;
 		// Criando um objeto para receber os dados javaBeans
-		
 		ArrayList<JavaBeans> lista = dao.validacaoLogin();
-		for (int i=0; i <lista.size();i++) {
-			System.out.println(lista.get(i).getId_usuario());
-			System.out.println(lista.get(i).getEmail_usuario());
-			System.out.println(lista.get(i).getSenha_usuario());
-			
+		// Retirada de itens da lista para comparação
+		for (int i = 0; i < lista.size(); i++) {
+			// Teste de recebimento de dados
+//					System.out.println(lista.get(i).getId_usuario());
+//					System.out.println(lista.get(i).getEmail_usuario());
+//					System.out.println(lista.get(i).getSenha_usuario());
+			if (emailDigitado.equals(lista.get(i).getEmail_usuario())
+					&& senhaDigitada.equals(lista.get(i).getSenha_usuario())) {
+				emailValidado = lista.get(i).getEmail_usuario();
+				senhaValidada = lista.get(i).getSenha_usuario();
+			}
+
 		}
-		String email_ = "admin@gmail.com";
-	    String senha_ = "admin";
-	  
-		String email= request.getParameter("email");
-		String senha= request.getParameter("senha");
-		
-		if (email_.equals(email) && senha_.equals(senha)) {
+		// Redirecionamento para pagina devida
+		if (emailDigitado.equals(emailValidado) && senhaDigitada.equals(senhaValidada)) {
 			response.sendRedirect("Login-correto.jsp");
-	    } else {
-	       response.sendRedirect("Login-errado.jsp");
-	    }
-		
+		} else {
+			response.sendRedirect("Login-errado.jsp");
+		}
 	}
 
 }

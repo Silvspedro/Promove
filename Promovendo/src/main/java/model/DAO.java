@@ -46,6 +46,7 @@ public class DAO {
 
 		} catch (Exception e) {
 			System.out.println(e);
+			
 		}
 	}
 
@@ -54,7 +55,7 @@ public class DAO {
 	public ArrayList<JavaBeans> validacaoLogin() {
 		// Criando objeto para acessar a classe JavaBeans
 		ArrayList<JavaBeans> dados_usuario = new ArrayList<>();
-		String read = "select * from contatos order by nome_usuario";
+		String read = "select * from cadastro_usuario order by nome_usuario";
 		try {
 			// abrir a conexão com o banco.
 			Connection con = conectar();
@@ -71,9 +72,9 @@ public class DAO {
 				// populando o ArrayList
 				dados_usuario.add(new JavaBeans(id_usuario, nome_usuario, email_usuario, senha_usuario));
 				// Encerrar a conexão com o banco.
-				con.close();
+				
 			}
-
+			con.close();
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
